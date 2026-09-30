@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d3b28">
+<title>Descubre Valparaíso, Caquetá</title>
+<style>
+:root{--v:#0d3b28;--v2:#1d6a46;--a:#f2cb35;--f:#fffdf7;--t:#153126;--s:#edf4ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--f);color:var(--t);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding-bottom:82px}
+img{display:block;width:100%}
+.hero{height:92svh;min-height:600px;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:#102d20}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,20,12,.94),rgba(4,20,12,.10) 62%,rgba(4,20,12,.30))}
+.hero-content{position:relative;z-index:2;padding:24px 18px 34px}
+.badge{display:inline-block;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(10px);padding:7px 11px;border-radius:999px;color:white;font-size:12px;font-weight:800}
+h1{font-size:clamp(44px,14vw,72px);line-height:.88;letter-spacing:-.06em;color:white;margin:14px 0 12px}
+h1 span{color:var(--a)}
+.hero p{color:#edf6ef;font-size:17px;line-height:1.5;margin:0 0 18px;max-width:34rem}
+.btn{border:0;border-radius:999px;padding:12px 16px;font-weight:850;font-size:14px}
+.primary{background:var(--a);color:#172015}
+.secondary{background:rgba(255,255,255,.14);color:white;border:1px solid rgba(255,255,255,.25)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+main{max-width:740px;margin:auto}
+section{padding:52px 16px}
+.eyebrow{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--v2)}
+h2{font-size:clamp(31px,9vw,46px);line-height:1;letter-spacing:-.04em;margin:8px 0 14px}
+.lead{font-size:17px;line-height:1.65;color:#4e665a}
+.gridfacts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.fact{background:var(--s);padding:16px;border-radius:20px;min-height:116px;display:flex;flex-direction:column;justify-content:flex-end}
+.fact b{font-size:25px;color:var(--v)} .fact small{font-size:12px;color:#5d7167}
+.card{background:white;border-radius:24px;overflow:hidden;margin:15px 0;box-shadow:0 12px 34px rgba(25,55,40,.12)}
+.photo{aspect-ratio:4/3;position:relative;background:#dfe8e1;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.realbadge{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.65);color:white;padding:6px 8px;border-radius:999px;font-size:10px;font-weight:800;backdrop-filter:blur(6px)}
+.cardbody{padding:18px}
+.tag{display:inline-block;background:#e9f2eb;color:var(--v2);padding:6px 9px;border-radius:999px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+.card h3{font-size:25px;margin:9px 0 7px}
+.card p{margin:0;color:#50675c;line-height:1.58}
+.credit{font-size:10px;color:#7b8f84;margin-top:10px;line-height:1.4}
+.flagbox{background:var(--v);color:white;padding:22px;border-radius:28px;margin-top:18px}
+.flag{overflow:hidden;border-radius:18px;aspect-ratio:3/2;display:grid;grid-template-rows:1fr 1fr 1fr;margin-bottom:18px;box-shadow:0 12px 28px rgba(0,0,0,.22)}
+.flag div:nth-child(1){background:#e8c52d} .flag div:nth-child(2){background:#fff} .flag div:nth-child(3){background:#2c8a49}
+.flagbox p{color:#e3ece6;line-height:1.6}
+.quizbox{background:#edf4ee;border-radius:28px;padding:20px}
+.qprog{font-size:12px;color:var(--v2);font-weight:900;margin-bottom:8px}
+#qText{font-size:21px;line-height:1.28;margin:6px 0 14px}
+.answers{display:grid;gap:9px}
+.answer{border:1px solid #cad8ce;background:white;border-radius:15px;padding:14px;text-align:left;font-weight:750;color:#21382b}
+.answer.correct{background:#dcf3e2;border-color:#5aa16e}
+.answer.wrong{background:#ffe3df;border-color:#d26d63}
+#feedback{min-height:47px;margin:11px 0;font-weight:800;line-height:1.4}
+#next{display:none;width:100%;background:var(--v);color:white}
+.score{display:none;text-align:center;padding:12px}
+.scorebig{font-size:58px;font-weight:950;color:var(--v)}
+.nav{position:fixed;left:50%;bottom:8px;transform:translateX(-50%);z-index:30;width:min(94vw,520px);display:grid;grid-template-columns:repeat(4,1fr);padding:7px;background:rgba(10,31,20,.93);backdrop-filter:blur(18px);border-radius:20px;box-shadow:0 12px 34px rgba(0,0,0,.27)}
+.nav a{text-decoration:none;color:#dce8df;text-align:center;font-size:10px;font-weight:800;padding:5px 2px}
+.nav span{display:block;font-size:21px}
+footer{background:#0c2418;color:#d7e4da;padding:32px 18px}
+footer small{display:block;color:#a7b9ae;line-height:1.6}
+@media(min-width:600px){.gridfacts{grid-template-columns:repeat(4,1fr)}section{padding-left:22px;padding-right:22px}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="inicio">
+<img src="imagenes/1.jpg"
+     data-direct="imagenes/1.jpg"
+     alt="Parque principal de Valparaíso, Caquetá"
+     onerror="this.onerror=null;this.src=this.dataset.direct">
+<div class="hero-content">
+  <div class="badge">📍 VALPARAÍSO · CAQUETÁ</div>
+  <h1>Descubre <span>Valparaíso</span></h1>
+  <p>Una experiencia pensada para celular: recorre imágenes reales, conoce datos del municipio y completa el reto final.</p>
+  <div class="actions">
+    <button class="btn primary" onclick="document.querySelector('#explora').scrollIntoView()">Comenzar recorrido</button>
+    <button class="btn secondary" onclick="full()">⛶ Pantalla completa</button>
+  </div>
+</div>
+</header>
+
+<main>
+<section id="identidad">
+<div class="eyebrow">01 · Identidad</div>
+<h2>Un municipio amazónico con identidad campesina</h2>
+<p class="lead">Valparaíso está ubicado al sur del departamento del Caquetá. Fue creado como municipio en 1985. Sus fuentes institucionales destacan la ganadería, la producción láctea, los arrozales y cultivos como plátano, yuca y maíz.</p>
+<div class="gridfacts">
+  <div class="fact"><b>1985</b><small>creación como municipio</small></div>
+  <div class="fact"><b>🐄</b><small>ganadería y producción láctea</small></div>
+  <div class="fact"><b>🌾</b><small>tradición de arrozales</small></div>
+  <div class="fact"><b>🌱</b><small>plátano, yuca y maíz</small></div>
+</div>
+</section>
+
+<section id="explora">
+<div class="eyebrow">02 · Recorrido fotográfico</div>
+<h2>Valparaíso en imágenes reales</h2>
+<p class="lead">Estas fotografías fueron localizadas en sitios web que documentan directamente al municipio o su territorio.</p>
+
+<article class="card">
+  <div class="photo">
+    <img loading="lazy" src="imagenes/2.webp">
+    <div class="realbadge">📷 Foto real · Valparaíso</div>
+  </div>
+  <div class="cardbody">
+    <span class="tag">Parque principal</span>
+    <h3>El corazón del casco urbano</h3>
+    <p>Árboles, senderos, bancas y espacios de encuentro hacen del parque uno de los lugares que mejor representa la vida cotidiana del municipio.</p>
+    <div class="credit">Fuente fotográfica: Universidad Jorge Tadeo Lozano.</div>
+  </div>
+</article>
+
+<article class="card">
+  <div class="photo">
+    <img loading="lazy" src="imagenes/3.jpg">
+    <div class="realbadge">📷 Foto real · Parque Los Fundadores</div>
+  </div>
+  <div class="cardbody">
+    <span class="tag">Memoria urbana</span>
+    <h3>Parque Los Fundadores</h3>
+    <p>Esta vista, tomada desde la zona de la Alcaldía, permite observar el parque, sus árboles y parte de la trama urbana de Valparaíso.</p>
+    <div class="credit">Fuente fotográfica: Municipios.com.co; fotografía atribuida en ese portal a Wilber A. Parra.</div>
+  </div>
+</article>
+
+<article class="card">
+  <div class="photo">
+    <img loading="lazy" src="imagenes/4.jpg">
+    <div class="realbadge">📷 Foto real · zona rural</div>
+  </div>
+  <div class="cardbody">
+    <span class="tag">Campo y producción</span>
+    <h3>Paisaje ganadero</h3>
+    <p>Una finca ubicada en Valparaíso muestra pasturas, cercas, árboles y zonas de agua, elementos característicos de la actividad ganadera rural.</p>
+    <div class="credit">Fuente fotográfica: anuncio de finca ganadera en Valparaíso publicado en Encuentra24.</div>
+  </div>
+</article>
+
+<article class="card">
+  <div class="photo">
+    <img loading="lazy" src="imagenes/5.webp">
+    <div class="realbadge">🗺️ Mapa real de referencia</div>
+  </div>
+  <div class="cardbody">
+    <span class="tag">Ubicación</span>
+    <h3>¿Dónde está Valparaíso?</h3>
+    <p>El mapa permite ubicar a Valparaíso dentro del departamento de Caquetá y visualizar su relación territorial con otros municipios.</p>
+    <div class="credit">Fuente: Comisión de la Verdad, mapa de Caquetá.</div>
+  </div>
+</article>
+
+<div class="flagbox">
+  <div class="flag"><div></div><div></div><div></div></div>
+  <div class="eyebrow" style="color:#f2cb35">03 · Símbolos</div>
+  <h2 style="color:white;font-size:36px">Bandera municipal</h2>
+  <p><b>Amarillo:</b> representa los arrozales maduros y frutos de la región. <b>Blanco:</b> simboliza la paz. <b>Verde:</b> representa la esperanza de progreso.</p>
+</div>
+</section>
+
+<section id="reto">
+<div class="eyebrow">04 · Reto final</div>
+<h2>¿Qué tanto conociste?</h2>
+<div class="quizbox">
+  <div id="quiz">
+    <div class="qprog" id="prog"></div>
+    <h3 id="qText"></h3>
+    <div class="answers" id="answers"></div>
+    <div id="feedback"></div>
+    <button class="btn" id="next" onclick="nextQuestion()">Siguiente →</button>
+  </div>
+  <div class="score" id="scoreBox">
+    <div>Resultado</div>
+    <div class="scorebig" id="scoreVal"></div>
+    <p id="scoreMsg"></p>
+    <button class="btn primary" onclick="restart()">Volver a intentar</button>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+<b>Descubre Valparaíso, Caquetá</b>
+<small>Página educativa optimizada para celulares y acceso mediante QR. Las fotografías se consultan desde la web y se cargan mediante un servicio de optimización para evitar bloqueos de visualización de los sitios de origen.</small>
+</footer>
+
+<nav class="nav">
+<a href="#inicio"><span>🏠</span>Inicio</a>
+<a href="#identidad"><span>📖</span>Identidad</a>
+<a href="#explora"><span>📷</span>Fotos</a>
+<a href="#reto"><span>🏆</span>Reto</a>
+</nav>
+
+<script>
+const qs=[
+{q:"¿En qué año fue creado Valparaíso como municipio?",o:["1959","1970","1985","2000"],c:2,e:"Valparaíso fue creado como municipio en 1985."},
+{q:"¿Qué actividad es importante en la economía rural local?",o:["Ganadería y producción láctea","Industria naval","Minería de carbón","Pesca marítima"],c:0,e:"Las fuentes institucionales resaltan la ganadería y la producción de leche."},
+{q:"¿Cuáles son cultivos mencionados para Valparaíso?",o:["Plátano, yuca y maíz","Trigo, avena y cebada","Uva, olivo y trigo","Centeno, lino y algodón"],c:0,e:"Plátano, yuca y maíz aparecen entre los cultivos destacados del municipio."},
+{q:"¿Qué representa el amarillo de la bandera?",o:["Los ríos","Los arrozales maduros y frutos","La selva","El ganado"],c:1,e:"El amarillo representa los arrozales maduros y los frutos propios de la región."},
+{q:"¿En qué departamento colombiano está Valparaíso?",o:["Huila","Putumayo","Caquetá","Meta"],c:2,e:"Valparaíso es un municipio del departamento del Caquetá."}
+];
+let i=0,score=0,locked=false;
+function render(){
+ locked=false;
+ let x=qs[i];
+ prog.textContent=`Pregunta ${i+1} de ${qs.length}`;
+ qText.textContent=x.q; feedback.textContent=""; next.style.display="none";
+ answers.innerHTML="";
+ x.o.forEach((t,n)=>{
+   let b=document.createElement("button");b.className="answer";b.textContent=t;
+   b.onclick=()=>choose(b,n);answers.appendChild(b);
+ });
+}
+function choose(b,n){
+ if(locked)return; locked=true; let x=qs[i];
+ [...answers.children].forEach((el,j)=>{el.disabled=true;if(j===x.c)el.classList.add("correct")});
+ if(n===x.c){score++;feedback.textContent="✅ ¡Correcto! "+x.e}
+ else{b.classList.add("wrong");feedback.textContent="🔎 "+x.e}
+ next.style.display="block";
+}
+function nextQuestion(){i++;if(i<qs.length)render();else finish()}
+function finish(){
+ quiz.style.display="none";scoreBox.style.display="block";scoreVal.textContent=`${score} / ${qs.length}`;
+ scoreMsg.textContent=score===5?"🏆 ¡Excelente! Conociste muy bien Valparaíso.":score>=3?"👏 Muy bien. Ya conoces varios elementos del municipio.":"🧭 Recorre nuevamente la página y vuelve a intentarlo.";
+}
+function restart(){i=0;score=0;quiz.style.display="block";scoreBox.style.display="none";render()}
+function full(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}
+render();
+</script>
+</body>
+</html>
